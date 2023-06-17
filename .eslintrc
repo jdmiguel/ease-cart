@@ -1,0 +1,20 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "ecmaFeatures": { "jsx": true },
+    "sourceType": "module"
+  },
+  "plugins": ["react-refresh", "html"],
+  "rules": {
+    "react-refresh/only-export-components": "warn",
+    "react/react-in-jsx-scope": "off"
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ]
+}
