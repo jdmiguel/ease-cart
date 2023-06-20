@@ -1,5 +1,6 @@
-import Header from '@/components/Header';
 import { useTheme } from '@emotion/react';
+import Header from '@/components/Header';
+import Products from '@/components/Products';
 import { getStyles } from './styles';
 
 const Main: React.FC = () => {
@@ -14,6 +15,7 @@ const Main: React.FC = () => {
           console.log('');
         }}
       />
+      <Products />
     </div>
   );
 };

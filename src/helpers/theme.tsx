@@ -24,9 +24,9 @@ export const defaultTheme = {
       hoveredBackground: colors.green_400,
     },
     disabled: {
-      text: colors.grey_200,
+      text: colors.neutral_200,
       hoveredText: 'unset',
-      background: colors.grey_100,
+      background: colors.neutral_300,
       hoveredBackground: 'unset',
     },
   },
@@ -34,16 +34,20 @@ export const defaultTheme = {
 
 export const lightTheme: Theme = {
   ...defaultTheme,
-  text: colors.dark,
-  background: colors.light,
-  shadow: colors.dark_shadow,
+  text: colors.neutral_600,
+  background: colors.neutral_200,
+  shadow: colors.neutral_600_10,
+  backgroundCard: colors.neutral_100,
+  divider: colors.neutral_300,
 };
 
 export const darkTheme: Theme = {
   ...defaultTheme,
-  text: colors.light,
-  background: colors.dark,
-  shadow: colors.light_shadow,
+  text: colors.neutral_200,
+  background: colors.neutral_600,
+  shadow: 'unset',
+  backgroundCard: colors.neutral_500,
+  divider: colors.neutral_500,
 };
 
 export const animations = {

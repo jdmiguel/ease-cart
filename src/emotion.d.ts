@@ -6,6 +6,8 @@ declare module '@emotion/react' {
     text: string;
     background: string;
     shadow: string;
+    backgroundCard: string;
+    divider: string;
     button: {
       primary: ButtonTheme;
       secondary: ButtonTheme;

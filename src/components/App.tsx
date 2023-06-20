@@ -6,7 +6,8 @@ import Main from '@/components/Main';
 
 const App: React.FC = () => {
   const { themeMode } = useThemeMode();
-  const selectedTheme = themeMode === 'light' ? lightTheme : darkTheme;
+  const isLightTheme = themeMode === 'light';
+  const selectedTheme = isLightTheme ? lightTheme : darkTheme;
 
   return (
     <ThemeProvider theme={selectedTheme}>
@@ -20,7 +21,7 @@ const App: React.FC = () => {
               margin: 0,
               fontSize: 14,
               fontFamily: 'Open Sans, sans-serif',
-              backgroundColor: colors.light,
+              backgroundColor: isLightTheme ? colors.neutral_200 : colors.neutral_600,
             },
           },
         ]}
