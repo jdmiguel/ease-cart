@@ -5,7 +5,6 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
   wrapper: css`
     background-color: ${theme.background};
     color: ${theme.text};
-    padding: 24px;
     min-height: 100vh;
     opacity: 0;
     transition: all 0.35s;

@@ -13,5 +13,6 @@ declare module '@emotion/react' {
       secondary: ButtonTheme;
       disabled: ButtonTheme;
     };
+    loader: string;
   }
 }

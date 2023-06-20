@@ -2,6 +2,7 @@ import { useTheme } from '@emotion/react';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import { getStyles } from './styles';
+import { forwardRef } from 'react';
 
 type Props = {
   title: string;
@@ -13,40 +14,37 @@ type Props = {
   onAddToCart: () => void;
 };
 
-const Card: React.FC<Props> = ({
-  title,
-  price,
-  description,
-  category,
-  thumbnail,
-  actionText,
-  onAddToCart,
-}) => {
-  const theme = useTheme();
-  const styles = getStyles({ theme });
+const Card = forwardRef<HTMLDivElement, Props>(
+  (
+    { title, price, description, category, thumbnail: thumbnailUrl, actionText, onAddToCart },
+    ref,
+  ) => {
+    const theme = useTheme();
+    const styles = getStyles({ theme, thumbnailUrl });
 
-  return (
-    <div css={styles.wrapper}>
-      <img css={styles.thumbnail} src={thumbnail} alt={title} />
-      <div css={styles.content}>
-        <header>
-          <p css={styles.title} title={title}>
-            {title}
-          </p>
-          <div css={styles.details}>
-            <span css={styles.price}>{`€${price}`}</span>
-            <Badge>{category}</Badge>
-          </div>
-        </header>
-        <p css={styles.description}>{description}</p>
-        <footer>
-          <Button ariaLabel={actionText} fullWidth onClick={onAddToCart}>
-            {actionText}
-          </Button>
-        </footer>
+    return (
+      <div css={styles.wrapper} ref={ref}>
+        <div css={styles.thumbnail} />
+        <div css={styles.content}>
+          <header>
+            <p css={styles.title} title={title}>
+              {title}
+            </p>
+            <div css={styles.details}>
+              <span css={styles.price}>{`€${price}`}</span>
+              <Badge>{category}</Badge>
+            </div>
+          </header>
+          <p css={styles.description}>{description}</p>
+          <footer>
+            <Button ariaLabel={actionText} fullWidth onClick={onAddToCart}>
+              {actionText}
+            </Button>
+          </footer>
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  },
+);
 
 export default Card;

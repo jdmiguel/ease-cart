@@ -1,30 +1,39 @@
 import { css, Theme } from '@emotion/react';
 
-export const getStyles = ({ theme }: { theme: Theme }) => ({
+export const getStyles = ({ theme, thumbnailUrl }: { theme: Theme; thumbnailUrl: string }) => ({
   wrapper: css`
     background-color: ${theme.backgroundCard};
     display: flex;
     flex-direction: column;
     box-shadow: 0px 2px 12px -2px ${theme.shadow};
+    padding: 16px;
   `,
   thumbnail: css`
-    max-width: 100%;
+    background-image: url(${thumbnailUrl});
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 264px;
+    border: 1px solid ${theme.divider};
   `,
   content: css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 10px;
-    padding: 20px;
+    margin-top: 18px;
     min-height: 200px;
-    border-top: 1px solid ${theme.divider};
   `,
   title: css`
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     font-weight: 700;
     text-transform: capitalize;
     margin-top: 0;
     margin-bottom: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   `,
   details: css`
     display: flex;

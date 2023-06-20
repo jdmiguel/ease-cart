@@ -30,6 +30,7 @@ export const defaultTheme = {
       hoveredBackground: 'unset',
     },
   },
+  loader: colors.green_300,
 };
 
 export const lightTheme: Theme = {
@@ -52,11 +53,10 @@ export const darkTheme: Theme = {
 
 export const animations = {
   fadeIn: keyframes`
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-`,
+    0% { opacity: 0 }
+    100% { opacity: 1 }`,
+  moveX: keyframes`
+    0% { transform: translateX(-100%) }
+    100% { transform: translateX(0) }
+  `,
 };

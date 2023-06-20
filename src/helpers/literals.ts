@@ -3,3 +3,7 @@ export const SHOPPING_BUTTON_TXT = 'Shopping Cart';
 export const ADD_TO_CART_BUTTON_TXT = 'Add to cart';
 export const DARK_MODE_BUTTON_TXT = 'Dark mode';
 export const LIGHT_MODE_BUTTON_TXT = 'Light mode';
+export const API_BASE_URL = 'https://dummyjson.com/products';
+export const ERROR_PRODUCTS_MESSAGE = 'Sorry! there was an error when fetching products';
+export const MAX_PRODUCTS_PER_PAGE = 12;
+export const TOTAL_PRODUCTS = 100;
