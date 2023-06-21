@@ -6,7 +6,7 @@ export const styles = {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    max-width: 1120px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 24px;
     gap: 18px;

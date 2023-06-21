@@ -13,9 +13,8 @@ type Props = {
 const ThemeModeContextProvider = ({ children }: Props) => {
   const [themeMode, setThemeMode] = useState<ThemeMode>('light');
 
-  const selectThemeMode = () => {
+  const selectThemeMode = () =>
     setThemeMode((prevThemeMode) => (prevThemeMode === 'light' ? 'dark' : 'light'));
-  };
 
   const value = {
     themeMode,

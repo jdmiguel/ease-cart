@@ -1,22 +1,34 @@
+import { forwardRef } from 'react';
 import { useTheme } from '@emotion/react';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import { getStyles } from './styles';
-import { forwardRef } from 'react';
 
 type Props = {
+  id: number;
   title: string;
   price: number;
   description: string;
   category: string;
   thumbnail: string;
+  withPrimaryButton: boolean;
   actionText: string;
-  onAddToCart: () => void;
+  onClickAction: (id: number) => void;
 };
 
 const Card = forwardRef<HTMLDivElement, Props>(
   (
-    { title, price, description, category, thumbnail: thumbnailUrl, actionText, onAddToCart },
+    {
+      id,
+      title,
+      price,
+      description,
+      category,
+      thumbnail: thumbnailUrl,
+      withPrimaryButton = true,
+      actionText,
+      onClickAction,
+    },
     ref,
   ) => {
     const theme = useTheme();
@@ -37,7 +49,12 @@ const Card = forwardRef<HTMLDivElement, Props>(
           </header>
           <p css={styles.description}>{description}</p>
           <footer>
-            <Button ariaLabel={actionText} fullWidth onClick={onAddToCart}>
+            <Button
+              variant={withPrimaryButton ? 'primary' : 'secondary'}
+              ariaLabel={actionText}
+              fullWidth
+              onClick={() => onClickAction(id)}
+            >
               {actionText}
             </Button>
           </footer>

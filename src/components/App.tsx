@@ -1,8 +1,8 @@
 import { ThemeProvider, Global, css } from '@emotion/react';
 import { useThemeMode } from '@/contexts/themeModeContext';
+import Main from '@/components/Main';
 import { lightTheme, darkTheme } from '@/helpers/theme';
 import { colors } from '@/helpers/colors';
-import Main from '@/components/Main';
 
 const App: React.FC = () => {
   const { themeMode } = useThemeMode();

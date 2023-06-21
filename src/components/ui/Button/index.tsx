@@ -1,5 +1,5 @@
-import { ButtonVariant } from './types';
 import { useTheme } from '@emotion/react';
+import { ButtonVariant } from './types';
 import { getStyles } from './styles';
 
 type Props = {
