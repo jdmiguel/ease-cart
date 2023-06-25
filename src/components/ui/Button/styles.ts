@@ -4,11 +4,13 @@ import { ButtonVariant } from './types';
 export const getStyles = ({
   theme,
   variant,
+  rounded,
   fullWidth,
   disabled,
 }: {
   theme: Theme;
   variant: ButtonVariant;
+  rounded: boolean;
   fullWidth: boolean;
   disabled: boolean;
 }) => {
@@ -27,10 +29,13 @@ export const getStyles = ({
       border: 0;
       cursor: pointer;
       pointer-events: ${disabled ? 'none' : 'unset'};
-      border-radius: 4px;
-      padding: 14px;
-      min-width: 120px;
+      border-radius: ${rounded ? '50%' : '4px'};
+      padding: ${rounded ? 'unset' : '14px'};
+      min-width: ${rounded ? '16px' : '120px'};
       width: ${fullWidth ? '100%' : 'unset'};
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: 700;
       transition: all 0.5s;
       background-color: ${buttonColors.background};

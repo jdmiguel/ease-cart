@@ -1,10 +1,13 @@
 import { ReactNode, createContext, useState, useContext } from 'react';
-import { Product } from '@/helpers/types';
+import { CartItem } from '@/helpers/types';
 
 const CartContext = createContext({
-  cartProducts: [] as Product[],
-  addCartProduct: (_: Product) => {},
-  removeCartProduct: (_: Product) => {},
+  cartItems: [] as CartItem[],
+  checkItemInCart: (_: number) => false as boolean,
+  addCartItem: (_: CartItem) => {},
+  removeCartItem: (_: number) => {},
+  increaseCartItemAmount: (_: number) => {},
+  decreaseCartItemAmount: (_: number) => {},
 });
 
 type Props = {
@@ -12,22 +15,48 @@ type Props = {
 };
 
 const CartContextProvider = ({ children }: Props) => {
-  const [cartProducts, setCartProducts] = useState<Product[]>([]);
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addCartProduct = (addedCartProduct: Product) =>
-    setCartProducts((prevCartProducts) => [...prevCartProducts, addedCartProduct]);
+  const checkItemInCart = (id: number) => cartItems.some((item) => item.id === id);
 
-  const removeCartProduct = (removedCartProduct: Product) => {
-    const filteredCartProducts = cartProducts.filter(
-      (cartProduct) => cartProduct.id !== removedCartProduct.id,
+  const addCartItem = (addedCartItem: CartItem) =>
+    setCartItems((prevCartItems) => [...prevCartItems, addedCartItem]);
+
+  const removeCartItem = (id: number) =>
+    setCartItems((prevCartITems) => prevCartITems.filter((cartItem) => cartItem.id !== id));
+
+  const increaseCartItemAmount = (id: number) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((cartItem) => ({
+        ...cartItem,
+        amount: cartItem.id === id ? cartItem.amount + 1 : cartItem.amount,
+      })),
     );
-    setCartProducts(filteredCartProducts);
+  };
+
+  const decreaseCartItemAmount = (id: number) => {
+    const matchedCartItem = cartItems.find((cartItem) => cartItem.id === id);
+
+    if (matchedCartItem?.amount === 1) {
+      removeCartItem(id);
+      return;
+    }
+
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((cartItem) => ({
+        ...cartItem,
+        amount: cartItem.id === id ? cartItem.amount - 1 : cartItem.amount,
+      })),
+    );
   };
 
   const value = {
-    cartProducts,
-    addCartProduct,
-    removeCartProduct,
+    cartItems,
+    checkItemInCart,
+    addCartItem,
+    removeCartItem,
+    increaseCartItemAmount,
+    decreaseCartItemAmount,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

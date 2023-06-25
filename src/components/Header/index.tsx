@@ -1,4 +1,5 @@
 import { useThemeMode } from '@/contexts/themeModeContext';
+import { useCart } from '@/contexts/cartContext';
 import Logo from '@/components/Logo';
 import Button from '@/components/ui/Button';
 import {
@@ -9,16 +10,16 @@ import {
 import { styles } from './styles';
 
 type Props = {
-  isShoppingCartDisabled: boolean;
-  onGoShoppingCart: () => void;
+  displayCart: () => void;
 };
 
-const Header: React.FC<Props> = ({ isShoppingCartDisabled, onGoShoppingCart }) => {
+const Header: React.FC<Props> = ({ displayCart }) => {
   const { themeMode, selectThemeMode } = useThemeMode();
   const isLightTheme = themeMode === 'light';
   const themeButtonText = isLightTheme ? DARK_MODE_BUTTON_TXT : LIGHT_MODE_BUTTON_TXT;
-
   const onChangeTheme = () => selectThemeMode();
+
+  const { cartItems } = useCart();
 
   return (
     <header css={styles.wrapper}>
@@ -26,8 +27,8 @@ const Header: React.FC<Props> = ({ isShoppingCartDisabled, onGoShoppingCart }) =
       <div css={styles.actions}>
         <Button
           ariaLabel={SHOPPING_BUTTON_TXT}
-          disabled={isShoppingCartDisabled}
-          onClick={onGoShoppingCart}
+          disabled={cartItems.length === 0}
+          onClick={displayCart}
         >
           {SHOPPING_BUTTON_TXT}
         </Button>

@@ -24,9 +24,9 @@ export const defaultTheme = {
       hoveredBackground: colors.green_400,
     },
     disabled: {
-      text: colors.neutral_200,
+      text: colors.neutral_300,
       hoveredText: 'unset',
-      background: colors.neutral_300,
+      background: colors.neutral_400,
       hoveredBackground: 'unset',
     },
   },
@@ -39,7 +39,9 @@ export const lightTheme: Theme = {
   background: colors.neutral_200,
   shadow: colors.neutral_600_10,
   backgroundCard: colors.neutral_100,
+  backgroundCartItem: colors.neutral_200,
   divider: colors.neutral_300,
+  overlay: colors.neutral_600_80,
 };
 
 export const darkTheme: Theme = {
@@ -48,7 +50,9 @@ export const darkTheme: Theme = {
   background: colors.neutral_600,
   shadow: 'unset',
   backgroundCard: colors.neutral_500,
+  backgroundCartItem: colors.neutral_400,
   divider: colors.neutral_500,
+  overlay: colors.neutral_600_80,
 };
 
 export const animations = {

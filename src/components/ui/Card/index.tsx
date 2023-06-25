@@ -43,7 +43,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
               {title}
             </p>
             <div css={styles.details}>
-              <span css={styles.price}>{`€${price}`}</span>
+              <span css={styles.price}>{`£${price}`}</span>
               <Badge>{category}</Badge>
             </div>
           </header>

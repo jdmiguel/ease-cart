@@ -4,6 +4,7 @@ import { getStyles } from './styles';
 
 type Props = {
   variant?: ButtonVariant;
+  rounded?: boolean;
   fullWidth?: boolean;
   disabled?: boolean;
   ariaLabel: string;
@@ -13,6 +14,7 @@ type Props = {
 
 const Button: React.FC<Props> = ({
   variant = 'primary',
+  rounded = false,
   fullWidth = false,
   disabled = false,
   ariaLabel,
@@ -20,7 +22,7 @@ const Button: React.FC<Props> = ({
   children,
 }) => {
   const theme = useTheme();
-  const styles = getStyles({ theme, variant, fullWidth, disabled });
+  const styles = getStyles({ theme, variant, rounded, fullWidth, disabled });
 
   return (
     <button css={styles.wrapper} type="button" aria-label={ariaLabel} onClick={onClick}>

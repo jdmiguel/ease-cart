@@ -18,7 +18,7 @@ const Products: React.FC = () => {
     nextProductsIndex,
   });
 
-  const { cartProducts, addCartProduct, removeCartProduct } = useCart();
+  const { checkItemInCart, addCartItem, removeCartItem } = useCart();
 
   const observer = useRef<IntersectionObserver>();
   const lastProductRef = useCallback(
@@ -50,19 +50,23 @@ const Products: React.FC = () => {
 
   const totalItems = products.length;
 
-  const checkCartProduct = (productId: number) =>
-    cartProducts.some((cartProduct) => cartProduct.id === productId);
-
   const handleClickAction = (productId: number) => {
     const selectedProduct = products.find((product) => product.id === productId);
-    const isCartProduct = checkCartProduct(productId);
-
     if (!selectedProduct) return;
-    if (isCartProduct) {
-      removeCartProduct(selectedProduct);
+
+    const isItemInCart = checkItemInCart(productId);
+
+    if (!isItemInCart) {
+      addCartItem({
+        id: selectedProduct.id,
+        name: selectedProduct.title,
+        price: selectedProduct.price,
+        thumbnail: selectedProduct.thumbnail,
+        amount: 1,
+      });
       return;
     }
-    addCartProduct(selectedProduct);
+    removeCartItem(productId);
   };
 
   return (
@@ -73,7 +77,7 @@ const Products: React.FC = () => {
         </div>
       )}
       {products.map((product: Product, index: number) => {
-        const isCartProduct = checkCartProduct(product.id);
+        const isItemInCart = checkItemInCart(product.id);
         return (
           <Card
             key={product.id}
@@ -84,8 +88,8 @@ const Products: React.FC = () => {
             description={product.description}
             category={product.category}
             thumbnail={product.thumbnail}
-            actionText={isCartProduct ? REMOVE_FROM_CART_BUTTON_TXT : ADD_TO_CART_BUTTON_TXT}
-            withPrimaryButton={!isCartProduct}
+            actionText={isItemInCart ? REMOVE_FROM_CART_BUTTON_TXT : ADD_TO_CART_BUTTON_TXT}
+            withPrimaryButton={!isItemInCart}
             onClickAction={handleClickAction}
           />
         );

@@ -27,7 +27,7 @@ export const getStyles = ({ theme, thumbnailUrl }: { theme: Theme; thumbnailUrl:
     min-height: 200px;
   `,
   title: css`
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 700;
     text-transform: capitalize;
     margin-top: 0;
