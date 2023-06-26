@@ -10,5 +10,6 @@ export const BUY_BUTTON_TXT = 'Buy now';
 export const API_BASE_URL = 'https://dummyjson.com/products';
 export const ERROR_PRODUCTS_MESSAGE = 'Sorry! there was an error when fetching products';
 export const EMPTY_SHOPPING_CART_MESSAGE = 'Please, add any product to the shopping cart';
+export const TOTAL_PRICE_TXT = 'Total: ';
 export const MAX_PRODUCTS_PER_PAGE = 12;
 export const TOTAL_PRODUCTS = 100;

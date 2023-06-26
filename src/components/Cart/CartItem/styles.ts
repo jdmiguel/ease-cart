@@ -16,8 +16,8 @@ export const getStyles = ({ theme, imageUrl }: { theme: Theme; imageUrl: string 
     background-size: cover;
     background-position: center;
     background-color: ${theme.background};
-    width: 70px;
-    height: 50px;
+    width: 80px;
+    height: 60px;
   `,
   content: css`
     display: flex;

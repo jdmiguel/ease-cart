@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button';
 import CartItem from '@/components/Cart/CartItem';
 import {
   SHOPPING_CART_TITLE,
+  TOTAL_PRICE_TXT,
   EMPTY_SHOPPING_CART_MESSAGE,
   BACK_BUTTON_TXT,
   BUY_BUTTON_TXT,
@@ -16,7 +17,7 @@ type Props = {
 };
 
 const ShoppingCart: React.FC<Props> = ({ open, onClose }) => {
-  const { cartItems, increaseCartItemAmount, decreaseCartItemAmount } = useCart();
+  const { cartItems, totalPrice, increaseCartItemAmount, decreaseCartItemAmount } = useCart();
 
   const theme = useTheme();
   const styles = getStyles({ theme });
@@ -28,7 +29,9 @@ const ShoppingCart: React.FC<Props> = ({ open, onClose }) => {
       <div css={styles.overlay}>
         <div css={styles.content}>
           <div>
-            <h3 css={styles.title}>{SHOPPING_CART_TITLE}</h3>
+            <header>
+              <h3 css={styles.title}>{SHOPPING_CART_TITLE}</h3>
+            </header>
             <ul css={styles.items}>
               {withCartItems ? (
                 cartItems.map((item) => (
@@ -46,6 +49,11 @@ const ShoppingCart: React.FC<Props> = ({ open, onClose }) => {
                 <p css={styles.emptyMsg}>{EMPTY_SHOPPING_CART_MESSAGE}</p>
               )}
             </ul>
+            <hr css={styles.divider} />
+            <div css={styles.totalPrice}>
+              <span>{TOTAL_PRICE_TXT}</span>
+              <span>{`€${totalPrice}`}</span>
+            </div>
           </div>
           <div css={styles.actions}>
             <Button variant="secondary" onClick={onClose} ariaLabel="back to products">

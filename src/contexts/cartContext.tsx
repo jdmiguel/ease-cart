@@ -3,6 +3,7 @@ import { CartItem } from '@/helpers/types';
 
 const CartContext = createContext({
   cartItems: [] as CartItem[],
+  totalPrice: 0,
   checkItemInCart: (_: number) => false as boolean,
   addCartItem: (_: CartItem) => {},
   removeCartItem: (_: number) => {},
@@ -16,16 +17,36 @@ type Props = {
 
 const CartContextProvider = ({ children }: Props) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const getCartItemById = (id: number) => cartItems.find((item) => item.id === id);
 
   const checkItemInCart = (id: number) => cartItems.some((item) => item.id === id);
 
-  const addCartItem = (addedCartItem: CartItem) =>
-    setCartItems((prevCartItems) => [...prevCartItems, addedCartItem]);
+  const increaseTotalPrice = (addedPrice: number) =>
+    setTotalPrice((prevTotalPrice) => prevTotalPrice + addedPrice);
 
-  const removeCartItem = (id: number) =>
+  const decreaseTotalPrice = (removedPrice: number) =>
+    setTotalPrice((prevTotalPrice) => prevTotalPrice - removedPrice);
+
+  const addCartItem = (addedCartItem: CartItem) => {
+    increaseTotalPrice(addedCartItem.price);
+    setCartItems((prevCartItems) => [...prevCartItems, addedCartItem]);
+  };
+
+  const removeCartItem = (id: number) => {
+    const matchedCartItem = getCartItemById(id);
+
+    decreaseTotalPrice(matchedCartItem?.price || 0);
+
     setCartItems((prevCartITems) => prevCartITems.filter((cartItem) => cartItem.id !== id));
+  };
 
   const increaseCartItemAmount = (id: number) => {
+    const matchedCartItem = getCartItemById(id);
+
+    increaseTotalPrice(matchedCartItem?.price || 0);
+
     setCartItems((prevCartItems) =>
       prevCartItems.map((cartItem) => ({
         ...cartItem,
@@ -35,12 +56,14 @@ const CartContextProvider = ({ children }: Props) => {
   };
 
   const decreaseCartItemAmount = (id: number) => {
-    const matchedCartItem = cartItems.find((cartItem) => cartItem.id === id);
+    const matchedCartItem = getCartItemById(id);
 
     if (matchedCartItem?.amount === 1) {
       removeCartItem(id);
       return;
     }
+
+    decreaseTotalPrice(matchedCartItem?.price || 0);
 
     setCartItems((prevCartItems) =>
       prevCartItems.map((cartItem) => ({
@@ -52,6 +75,7 @@ const CartContextProvider = ({ children }: Props) => {
 
   const value = {
     cartItems,
+    totalPrice,
     checkItemInCart,
     addCartItem,
     removeCartItem,
