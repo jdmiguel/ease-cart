@@ -1,6 +1,7 @@
 import { useTheme } from '@emotion/react';
-import { ButtonVariant } from './types';
 import { getStyles } from './styles';
+
+export type ButtonVariant = 'primary' | 'secondary';
 
 type Props = {
   variant?: ButtonVariant;

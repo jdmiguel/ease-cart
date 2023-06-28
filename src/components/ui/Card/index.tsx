@@ -1,6 +1,7 @@
 import { forwardRef } from 'react';
 import { useTheme } from '@emotion/react';
 import Badge from '@/components/ui/Badge';
+import Rating from '@/components/ui/Rating';
 import Button from '@/components/ui/Button';
 import { getStyles } from './styles';
 
@@ -10,6 +11,7 @@ type Props = {
   price: number;
   description: string;
   category: string;
+  rating: number;
   thumbnail: string;
   withPrimaryButton: boolean;
   actionText: string;
@@ -24,6 +26,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
       price,
       description,
       category,
+      rating,
       thumbnail: thumbnailUrl,
       withPrimaryButton = true,
       actionText,
@@ -45,6 +48,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
             <div css={styles.details}>
               <span css={styles.price}>{`£${price}`}</span>
               <Badge>{category}</Badge>
+              <Rating value={rating} />
             </div>
           </header>
           <p css={styles.description}>{description}</p>

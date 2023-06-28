@@ -1,5 +1,5 @@
 import { css, Theme } from '@emotion/react';
-import { ButtonVariant } from './types';
+import { ButtonVariant } from '.';
 
 export const getStyles = ({
   theme,

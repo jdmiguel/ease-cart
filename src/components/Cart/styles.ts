@@ -48,9 +48,10 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
   `,
   divider: css`
     margin-top: 8px;
-    width: 100%;
-    opacity: 0.5;
+    height: 1px;
+    border: none;
     background-color: ${theme.text};
+    opacity: 0.2;
   `,
   totalPrice: css`
     display: flex;

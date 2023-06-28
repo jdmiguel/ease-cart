@@ -13,3 +13,4 @@ export const EMPTY_SHOPPING_CART_MESSAGE = 'Please, add any product to the shopp
 export const TOTAL_PRICE_TXT = 'Total: ';
 export const MAX_PRODUCTS_PER_PAGE = 12;
 export const TOTAL_PRODUCTS = 100;
+export const RATING_STAR_ALT_TXT = 'Item rating star';

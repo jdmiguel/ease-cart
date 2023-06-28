@@ -87,6 +87,7 @@ const Products: React.FC = () => {
             price={product.price}
             description={product.description}
             category={product.category}
+            rating={product.rating}
             thumbnail={product.thumbnail}
             actionText={isItemInCart ? REMOVE_FROM_CART_BUTTON_TXT : ADD_TO_CART_BUTTON_TXT}
             withPrimaryButton={!isItemInCart}
