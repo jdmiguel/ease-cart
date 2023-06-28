@@ -52,7 +52,7 @@ const ShoppingCart: React.FC<Props> = ({ open, onClose }) => {
             <hr css={styles.divider} />
             <div css={styles.totalPrice}>
               <span>{TOTAL_PRICE_TXT}</span>
-              <span>{`€${totalPrice}`}</span>
+              <span>{`£${totalPrice}`}</span>
             </div>
           </div>
           <div css={styles.actions}>

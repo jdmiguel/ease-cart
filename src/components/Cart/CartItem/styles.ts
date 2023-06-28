@@ -16,14 +16,14 @@ export const getStyles = ({ theme, imageUrl }: { theme: Theme; imageUrl: string 
     background-size: cover;
     background-position: center;
     background-color: ${theme.background};
-    width: 80px;
-    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
   `,
   content: css`
     display: flex;
     justify-content: space-between;
-    width: 100%;
     padding-right: 12px;
+    flex: 1;
   `,
   details: css`
     display: flex;
@@ -32,6 +32,10 @@ export const getStyles = ({ theme, imageUrl }: { theme: Theme; imageUrl: string 
   name: css`
     font-weight: 700;
     margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
   `,
   price: css`
     margin: 0;

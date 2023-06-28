@@ -27,8 +27,10 @@ const ShoppingCartItem: React.FC<Props> = ({
       <div css={styles.image} />
       <div css={styles.content}>
         <div css={styles.details}>
-          <p css={styles.name}>{name}</p>
-          <p css={styles.price}>{`€${price}`}</p>
+          <p css={styles.name} title={name}>
+            {name}
+          </p>
+          <p css={styles.price}>{`£${price}`}</p>
         </div>
         <ItemCounter
           itemId={id}
