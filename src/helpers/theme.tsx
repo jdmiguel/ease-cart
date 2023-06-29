@@ -1,5 +1,6 @@
-import { keyframes, Theme } from '@emotion/react';
+import { keyframes, Theme, ThemeProvider } from '@emotion/react';
 import { colors } from './colors';
+import { ReactElement } from 'react';
 
 export type ThemeMode = 'light' | 'dark';
 export type ButtonTheme = {
@@ -64,3 +65,7 @@ export const animations = {
     100% { transform: translateX(0) }
   `,
 };
+
+export const renderWithTheme = (component: ReactElement) => (
+  <ThemeProvider theme={lightTheme}>{component}</ThemeProvider>
+);

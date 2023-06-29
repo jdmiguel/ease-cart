@@ -6,19 +6,11 @@ type Props = {
   id: number;
   name: string;
   price: number;
+  amount: number;
   imageUrl: string;
-  onIncreaseItemsAmount: (id: number) => void;
-  onDecreaseItemsAmount: (id: number) => void;
 };
 
-const ShoppingCartItem: React.FC<Props> = ({
-  id,
-  name,
-  price,
-  imageUrl,
-  onIncreaseItemsAmount,
-  onDecreaseItemsAmount,
-}) => {
+const ShoppingCartItem: React.FC<Props> = ({ id, name, price, amount, imageUrl }) => {
   const theme = useTheme();
   const styles = getStyles({ theme, imageUrl });
 
@@ -32,11 +24,7 @@ const ShoppingCartItem: React.FC<Props> = ({
           </p>
           <p css={styles.price}>{`£${price}`}</p>
         </div>
-        <ItemCounter
-          itemId={id}
-          onIncreaseItemsAmount={onIncreaseItemsAmount}
-          onDecreaseItemsAmount={onDecreaseItemsAmount}
-        />
+        <ItemCounter itemId={id} initialValue={amount} />
       </div>
     </li>
   );

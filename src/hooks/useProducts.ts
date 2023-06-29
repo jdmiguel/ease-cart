@@ -5,7 +5,18 @@ import {
   MAX_PRODUCTS_PER_PAGE,
   TOTAL_PRODUCTS,
 } from '@/helpers/literals';
-import { Product } from '@/helpers/types';
+import { FetchedProduct, Product } from '@/helpers/types';
+
+const getRefinedProducts = (products: FetchedProduct[]): Product[] =>
+  products.map(({ id, title, price, description, rating, category, thumbnail }) => ({
+    id,
+    title,
+    price,
+    description,
+    rating,
+    category,
+    thumbnail,
+  }));
 
 const useProducts = ({ nextProductsIndex }: { nextProductsIndex: number }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,10 +32,13 @@ const useProducts = ({ nextProductsIndex }: { nextProductsIndex: number }) => {
         if (response.status === 200) return response.json();
         return Promise.reject(ERROR_PRODUCTS_MESSAGE);
       })
-      .then(({ products: fetchedProducts, limit }: { products: Product[]; limit: number }) => {
-        setProducts((prevProducts: Product[]) => [...prevProducts, ...fetchedProducts]);
-        setAreAllItemsLoaded(nextProductsIndex + limit === TOTAL_PRODUCTS);
-      })
+      .then(
+        ({ products: fetchedProducts, limit }: { products: FetchedProduct[]; limit: number }) => {
+          const refinedProducts = getRefinedProducts(fetchedProducts);
+          setProducts((prevProducts: Product[]) => [...prevProducts, ...refinedProducts]);
+          setAreAllItemsLoaded(nextProductsIndex + limit === TOTAL_PRODUCTS);
+        },
+      )
       .catch((error) => {
         setErrorMessage(error);
       })

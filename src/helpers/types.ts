@@ -1,4 +1,4 @@
-export type Product = {
+export type FetchedProduct = {
   id: number;
   title: string;
   description: string;
@@ -11,6 +11,11 @@ export type Product = {
   thumbnail: string;
   images: string[];
 };
+
+export type Product = Pick<
+  FetchedProduct,
+  'id' | 'title' | 'price' | 'description' | 'rating' | 'category' | 'thumbnail'
+>;
 
 export type CartItem = {
   id: number;

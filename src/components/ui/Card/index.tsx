@@ -3,37 +3,20 @@ import { useTheme } from '@emotion/react';
 import Badge from '@/components/ui/Badge';
 import Rating from '@/components/ui/Rating';
 import Button from '@/components/ui/Button';
+import { Product } from '@/helpers/types';
 import { getStyles } from './styles';
 
 type Props = {
-  id: number;
-  title: string;
-  price: number;
-  description: string;
-  category: string;
-  rating: number;
-  thumbnail: string;
+  data: Product;
   withPrimaryButton: boolean;
   actionText: string;
   onClickAction: (id: number) => void;
 };
 
 const Card = forwardRef<HTMLDivElement, Props>(
-  (
-    {
-      id,
-      title,
-      price,
-      description,
-      category,
-      rating,
-      thumbnail: thumbnailUrl,
-      withPrimaryButton = true,
-      actionText,
-      onClickAction,
-    },
-    ref,
-  ) => {
+  ({ data, withPrimaryButton = true, actionText, onClickAction }, ref) => {
+    const { id, title, price, description, category, rating, thumbnail: thumbnailUrl } = data;
+
     const theme = useTheme();
     const styles = getStyles({ theme, thumbnailUrl });
 

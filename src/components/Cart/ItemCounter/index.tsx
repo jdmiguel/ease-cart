@@ -1,28 +1,26 @@
 import { useState } from 'react';
+import { useCart } from '@/contexts/cartContext';
 import Button from '@/components/ui/Button';
 import { styles } from './styles';
 
 export type Props = {
   itemId: number;
-  onIncreaseItemsAmount: (id: number) => void;
-  onDecreaseItemsAmount: (id: number) => void;
+  initialValue: number;
 };
 
-const ProductCounter: React.FC<Props> = ({
-  itemId,
-  onIncreaseItemsAmount,
-  onDecreaseItemsAmount,
-}) => {
-  const [counter, setCounter] = useState(1);
+const ProductCounter: React.FC<Props> = ({ itemId, initialValue }) => {
+  const [counter, setCounter] = useState(initialValue);
+
+  const { increaseCartItemAmount, decreaseCartItemAmount } = useCart();
 
   const onClickAddItem = () => {
     setCounter((prevCounter) => prevCounter + 1);
-    onIncreaseItemsAmount(itemId);
+    increaseCartItemAmount(itemId);
   };
 
   const onClickRemoveItem = () => {
     setCounter((prevCounter) => prevCounter - 1);
-    onDecreaseItemsAmount(itemId);
+    decreaseCartItemAmount(itemId);
   };
 
   return (

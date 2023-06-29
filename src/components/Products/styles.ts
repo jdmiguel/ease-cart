@@ -6,7 +6,7 @@ export const styles = {
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 20px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 0 auto 24px;
     padding: 0 24px;
   `,
   loaderWrapper: css`

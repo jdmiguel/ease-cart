@@ -77,20 +77,17 @@ const Products: React.FC = () => {
         </div>
       )}
       {products.map((product: Product, index: number) => {
-        const isItemInCart = checkItemInCart(product.id);
+        const { id } = product;
+        const isItemInCart = checkItemInCart(id);
+        const isLastItemDisplayed = index + 1 === totalItems;
+
         return (
           <Card
-            key={product.id}
-            id={product.id}
-            ref={index + 1 === totalItems ? lastProductRef : null}
-            title={product.title}
-            price={product.price}
-            description={product.description}
-            category={product.category}
-            rating={product.rating}
-            thumbnail={product.thumbnail}
-            actionText={isItemInCart ? REMOVE_FROM_CART_BUTTON_TXT : ADD_TO_CART_BUTTON_TXT}
+            key={id}
+            ref={isLastItemDisplayed ? lastProductRef : null}
+            data={product}
             withPrimaryButton={!isItemInCart}
+            actionText={isItemInCart ? REMOVE_FROM_CART_BUTTON_TXT : ADD_TO_CART_BUTTON_TXT}
             onClickAction={handleClickAction}
           />
         );

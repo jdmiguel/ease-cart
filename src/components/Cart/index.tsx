@@ -19,8 +19,6 @@ const Cart: React.FC = () => {
     cartItems,
     totalPrice,
     isPurchaseCompleted,
-    increaseCartItemAmount,
-    decreaseCartItemAmount,
     toggleCartOpenState,
     completePurchase,
   } = useCart();
@@ -58,9 +56,8 @@ const Cart: React.FC = () => {
                       id={item.id}
                       name={item.name}
                       price={item.price}
+                      amount={item.amount}
                       imageUrl={item.thumbnail}
-                      onIncreaseItemsAmount={increaseCartItemAmount}
-                      onDecreaseItemsAmount={decreaseCartItemAmount}
                     />
                   ))}
                 </ul>
