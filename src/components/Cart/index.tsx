@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useCart } from '@/contexts/cartContext';
 import Button from '@/components/ui/Button';
