@@ -5,6 +5,7 @@ export const REMOVE_FROM_CART_BUTTON_TXT = 'Remove from cart';
 export const DARK_MODE_BUTTON_TXT = 'Dark mode';
 export const LIGHT_MODE_BUTTON_TXT = 'Light mode';
 export const SHOPPING_CART_TITLE = 'Shopping Cart';
+export const SHOPPING_CART_SCROLL_MESSAGE = 'Scroll down to see all the selected items';
 export const BACK_BUTTON_TXT = 'Back to products';
 export const BUY_BUTTON_TXT = 'Buy now';
 export const API_BASE_URL = 'https://dummyjson.com/products';

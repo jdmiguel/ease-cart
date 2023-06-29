@@ -9,17 +9,13 @@ import {
 } from '@/helpers/literals';
 import { styles } from './styles';
 
-type Props = {
-  displayCart: () => void;
-};
-
-const Header: React.FC<Props> = ({ displayCart }) => {
+const Header: React.FC = () => {
   const { themeMode, selectThemeMode } = useThemeMode();
   const isLightTheme = themeMode === 'light';
   const themeButtonText = isLightTheme ? DARK_MODE_BUTTON_TXT : LIGHT_MODE_BUTTON_TXT;
   const onChangeTheme = () => selectThemeMode();
 
-  const { cartItems } = useCart();
+  const { toggleCartOpenState, cartItems } = useCart();
 
   return (
     <header css={styles.wrapper}>
@@ -28,7 +24,7 @@ const Header: React.FC<Props> = ({ displayCart }) => {
         <Button
           ariaLabel={SHOPPING_BUTTON_TXT}
           disabled={cartItems.length === 0}
-          onClick={displayCart}
+          onClick={toggleCartOpenState}
         >
           {SHOPPING_BUTTON_TXT}
         </Button>

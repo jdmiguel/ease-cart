@@ -1,14 +1,18 @@
-import { ReactNode, createContext, useState, useContext } from 'react';
+import { ReactNode, createContext, useState, useContext, useEffect } from 'react';
+import useLockedBody from '@/hooks/useLockedBody';
 import { CartItem } from '@/helpers/types';
 
 const CartContext = createContext({
   cartItems: [] as CartItem[],
   totalPrice: 0,
+  isCartOpen: false,
+  toggleCartOpenState: () => {},
   checkItemInCart: (_: number) => false as boolean,
   addCartItem: (_: CartItem) => {},
   removeCartItem: (_: number) => {},
   increaseCartItemAmount: (_: number) => {},
   decreaseCartItemAmount: (_: number) => {},
+  resetCart: () => {},
 });
 
 type Props = {
@@ -16,8 +20,22 @@ type Props = {
 };
 
 const CartContextProvider = ({ children }: Props) => {
+  const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+
+  const { updateLocked } = useLockedBody();
+
+  useEffect(() => {
+    if (isCartOpen) {
+      updateLocked(true);
+      return;
+    }
+
+    updateLocked(false);
+  }, [isCartOpen, updateLocked]);
+
+  const toggleCartOpenState = () => setIsCartOpen((prevIsCartOpen) => !prevIsCartOpen);
 
   const getCartItemById = (id: number) => cartItems.find((item) => item.id === id);
 
@@ -73,14 +91,22 @@ const CartContextProvider = ({ children }: Props) => {
     );
   };
 
+  const resetCart = () => {
+    setCartItems([]);
+    setTotalPrice(0);
+  };
+
   const value = {
     cartItems,
     totalPrice,
+    isCartOpen,
+    toggleCartOpenState,
     checkItemInCart,
     addCartItem,
     removeCartItem,
     increaseCartItemAmount,
     decreaseCartItemAmount,
+    resetCart,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
