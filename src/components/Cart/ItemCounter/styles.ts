@@ -5,6 +5,6 @@ export const styles = {
     display: flex;
     align-items: center;
     gap: 6px;
-    font-weight: 700;
+    font-weight: 600;
   `,
 };

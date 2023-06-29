@@ -6,13 +6,14 @@ const CartContext = createContext({
   cartItems: [] as CartItem[],
   totalPrice: 0,
   isCartOpen: false,
+  isPurchaseCompleted: false,
   toggleCartOpenState: () => {},
   checkItemInCart: (_: number) => false as boolean,
   addCartItem: (_: CartItem) => {},
   removeCartItem: (_: number) => {},
   increaseCartItemAmount: (_: number) => {},
   decreaseCartItemAmount: (_: number) => {},
-  resetCart: () => {},
+  completePurchase: () => {},
 });
 
 type Props = {
@@ -23,6 +24,7 @@ const CartContextProvider = ({ children }: Props) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isPurchaseCompleted, setIsPurchaseCompleted] = useState(false);
 
   const { updateLocked } = useLockedBody();
 
@@ -48,6 +50,7 @@ const CartContextProvider = ({ children }: Props) => {
     setTotalPrice((prevTotalPrice) => prevTotalPrice - removedPrice);
 
   const addCartItem = (addedCartItem: CartItem) => {
+    setIsPurchaseCompleted(false);
     increaseTotalPrice(addedCartItem.price);
     setCartItems((prevCartItems) => [...prevCartItems, addedCartItem]);
   };
@@ -91,7 +94,8 @@ const CartContextProvider = ({ children }: Props) => {
     );
   };
 
-  const resetCart = () => {
+  const completePurchase = () => {
+    setIsPurchaseCompleted(true);
     setCartItems([]);
     setTotalPrice(0);
   };
@@ -100,13 +104,14 @@ const CartContextProvider = ({ children }: Props) => {
     cartItems,
     totalPrice,
     isCartOpen,
+    isPurchaseCompleted,
     toggleCartOpenState,
     checkItemInCart,
     addCartItem,
     removeCartItem,
     increaseCartItemAmount,
     decreaseCartItemAmount,
-    resetCart,
+    completePurchase,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;

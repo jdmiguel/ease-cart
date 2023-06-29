@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useTheme } from '@emotion/react';
 import { useCart } from '@/contexts/cartContext';
 import Button from '@/components/ui/Button';
@@ -6,6 +7,7 @@ import {
   SHOPPING_CART_TITLE,
   SHOPPING_CART_SCROLL_MESSAGE,
   TOTAL_PRICE_TXT,
+  PURCHASE_COMPLETED_MESSAGE,
   EMPTY_SHOPPING_CART_MESSAGE,
   BACK_BUTTON_TXT,
   BUY_BUTTON_TXT,
@@ -17,10 +19,11 @@ const Cart: React.FC = () => {
     isCartOpen,
     cartItems,
     totalPrice,
+    isPurchaseCompleted,
     increaseCartItemAmount,
     decreaseCartItemAmount,
     toggleCartOpenState,
-    resetCart,
+    completePurchase,
   } = useCart();
 
   const theme = useTheme();
@@ -29,10 +32,15 @@ const Cart: React.FC = () => {
   const withCartItems = cartItems.length > 0;
   const hasScroll = cartItems.length > 3;
 
-  const onClickBuyButton = () => {
-    resetCart();
+  const handleMainAction = () => {
+    if (!isPurchaseCompleted) {
+      completePurchase();
+      return;
+    }
     toggleCartOpenState();
   };
+
+  const mainActionTxt = !isPurchaseCompleted ? BUY_BUTTON_TXT : BACK_BUTTON_TXT;
 
   return (
     <dialog css={styles.wrapper} open={isCartOpen}>
@@ -40,7 +48,7 @@ const Cart: React.FC = () => {
         <div css={styles.content}>
           <div>
             <header css={styles.header}>
-              <h3 css={styles.title}>{SHOPPING_CART_TITLE}</h3>
+              <h2 css={styles.title}>{SHOPPING_CART_TITLE}</h2>
             </header>
             {withCartItems ? (
               <>
@@ -60,21 +68,37 @@ const Cart: React.FC = () => {
                 {hasScroll && <p css={styles.scrollTxt}>{SHOPPING_CART_SCROLL_MESSAGE}</p>}
               </>
             ) : (
-              <p css={styles.emptyMsg}>{EMPTY_SHOPPING_CART_MESSAGE}</p>
+              <p css={styles.emptyMsg}>
+                {isPurchaseCompleted ? PURCHASE_COMPLETED_MESSAGE : EMPTY_SHOPPING_CART_MESSAGE}
+              </p>
             )}
-            <hr css={styles.divider} />
-            <div css={styles.totalPrice}>
-              <span>{TOTAL_PRICE_TXT}</span>
-              <span>{`£${totalPrice}`}</span>
-            </div>
+            {!isPurchaseCompleted && (
+              <>
+                <hr css={styles.divider} />
+                <div css={styles.totalPrice}>
+                  <span>{TOTAL_PRICE_TXT}</span>
+                  <span>{`£${totalPrice}`}</span>
+                </div>
+              </>
+            )}
           </div>
           <div css={styles.actions}>
-            <Button variant="secondary" onClick={toggleCartOpenState} ariaLabel="back to products">
-              {BACK_BUTTON_TXT}
+            <Button
+              onClick={handleMainAction}
+              ariaLabel={mainActionTxt}
+              disabled={!withCartItems && !isPurchaseCompleted}
+            >
+              {mainActionTxt}
             </Button>
-            <Button onClick={onClickBuyButton} ariaLabel="buy" disabled={!withCartItems}>
-              {BUY_BUTTON_TXT}
-            </Button>
+            {!isPurchaseCompleted && (
+              <Button
+                variant="secondary"
+                onClick={toggleCartOpenState}
+                ariaLabel="back to products"
+              >
+                {BACK_BUTTON_TXT}
+              </Button>
+            )}
           </div>
         </div>
       </div>

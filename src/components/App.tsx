@@ -14,13 +14,14 @@ const App: React.FC = () => {
       <Global
         styles={[
           css`
-            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
           `,
           {
             body: {
               margin: 0,
               fontSize: 14,
               fontFamily: 'Open Sans, sans-serif',
+              fontWeight: 300,
               backgroundColor: isLightTheme ? colors.neutral_200 : colors.neutral_600,
             },
           },

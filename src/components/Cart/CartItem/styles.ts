@@ -30,14 +30,15 @@ export const getStyles = ({ theme, imageUrl }: { theme: Theme; imageUrl: string 
     flex-direction: column;
   `,
   name: css`
-    font-weight: 700;
     margin: 0;
+    max-width: 150px;
+    font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-width: 150px;
   `,
   price: css`
     margin: 0;
+    font-weight: 400;
   `,
 });

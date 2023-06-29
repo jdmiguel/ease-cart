@@ -42,6 +42,7 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
   `,
   title: css`
     font-size: 1rem;
+    font-weight: 800;
     margin: 0;
   `,
   scrollTxt: css`
@@ -70,7 +71,7 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
     display: flex;
     justify-content: space-between;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 600;
   `,
   actions: css`
     display: flex;
