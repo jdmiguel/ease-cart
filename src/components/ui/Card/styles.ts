@@ -5,7 +5,6 @@ export const getStyles = ({ theme, thumbnailUrl }: { theme: Theme; thumbnailUrl:
     background-color: ${theme.backgroundCard};
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 2px 12px -2px ${theme.shadow};
     padding: 16px;
   `,
   thumbnail: css`
@@ -16,7 +15,6 @@ export const getStyles = ({ theme, thumbnailUrl }: { theme: Theme; thumbnailUrl:
     background-color: ${theme.background};
     width: 100%;
     height: 264px;
-    border: 1px solid ${theme.divider};
   `,
   content: css`
     display: flex;

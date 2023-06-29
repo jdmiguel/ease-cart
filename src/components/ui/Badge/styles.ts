@@ -3,13 +3,12 @@ import { colors } from '@/helpers/colors';
 
 export const styles = {
   wrapper: css`
-    padding: 8px;
+    padding: 4px 8px;
     text-transform: uppercase;
-    color: ${colors.neutral_100};
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.1;
-    background-color: ${colors.yellow_200};
-    border-radius: 12px;
+    color: ${colors.neutral_200};
+    font-size: 0.7rem;
+    letter-spacing: 0.02rem;
+    background-color: ${colors.neutral_400};
+    border-radius: 10px;
   `,
 };

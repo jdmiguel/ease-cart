@@ -18,10 +18,10 @@ export const defaultTheme = {
       hoveredBackground: colors.green_100,
     },
     secondary: {
-      text: colors.green_200,
-      hoveredText: colors.green_100,
-      background: colors.green_500,
-      hoveredBackground: colors.green_400,
+      text: colors.neutral_100,
+      hoveredText: colors.light,
+      background: colors.yellow_200,
+      hoveredBackground: colors.yellow_100,
     },
     disabled: {
       text: colors.neutral_300,

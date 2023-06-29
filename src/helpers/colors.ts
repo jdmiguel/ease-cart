@@ -1,8 +1,9 @@
 export const colors = {
+  light: '#f8fcfc',
   neutral_100: '#f8fcfc',
   neutral_200: '#e6f0ee',
   neutral_300: '#9eb8b8',
-  neutral_400: '#576b6b',
+  neutral_400: '#5e7373',
   neutral_500: '#404545',
   neutral_600: '#1F2221',
   neutral_600_10: 'rgba(31, 34, 33, 0.2)',
