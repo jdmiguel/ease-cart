@@ -4,13 +4,13 @@ import { getStyles } from './styles';
 export type ButtonVariant = 'primary' | 'secondary';
 
 type Props = {
+  children: string;
   variant?: ButtonVariant;
   rounded?: boolean;
   fullWidth?: boolean;
   disabled?: boolean;
   ariaLabel: string;
   onClick: () => void;
-  children: string;
 };
 
 const Button: React.FC<Props> = ({

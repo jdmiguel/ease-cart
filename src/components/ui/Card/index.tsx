@@ -8,7 +8,7 @@ import { getStyles } from './styles';
 
 type Props = {
   data: Product;
-  withPrimaryButton: boolean;
+  withPrimaryButton?: boolean;
   actionText: string;
   onClickAction: (id: number) => void;
 };
@@ -21,7 +21,7 @@ const Card = forwardRef<HTMLDivElement, Props>(
     const styles = getStyles({ theme, thumbnailUrl });
 
     return (
-      <div css={styles.wrapper} ref={ref}>
+      <div css={styles.wrapper} ref={ref} role="presentation">
         <div css={styles.thumbnailWrapper}>
           <div css={styles.thumbnail} />
         </div>
