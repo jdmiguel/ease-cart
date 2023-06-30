@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 export const styles = {
   wrapper: css`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto 24px;

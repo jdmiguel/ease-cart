@@ -22,7 +22,9 @@ const Card = forwardRef<HTMLDivElement, Props>(
 
     return (
       <div css={styles.wrapper} ref={ref}>
-        <div css={styles.thumbnail} />
+        <div css={styles.thumbnailWrapper}>
+          <div css={styles.thumbnail} />
+        </div>
         <div css={styles.content}>
           <header>
             <p css={styles.title} title={title}>

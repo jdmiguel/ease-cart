@@ -1,4 +1,5 @@
 import { css, Theme } from '@emotion/react';
+import loadingImgPath from '@/assets/loading.svg';
 
 export const getStyles = ({ theme, thumbnailUrl }: { theme: Theme; thumbnailUrl: string }) => ({
   wrapper: css`
@@ -7,14 +8,22 @@ export const getStyles = ({ theme, thumbnailUrl }: { theme: Theme; thumbnailUrl:
     flex-direction: column;
     padding: 16px;
   `,
+  thumbnailWrapper: css`
+    background-image: url(${loadingImgPath});
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: ${theme.background};
+    width: 100%;
+    height: 264px;
+  `,
   thumbnail: css`
     background-image: url(${thumbnailUrl});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: ${theme.background};
     width: 100%;
-    height: 264px;
+    height: 100%;
   `,
   content: css`
     display: flex;
