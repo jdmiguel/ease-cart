@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {
   API_BASE_URL,
-  ERROR_PRODUCTS_MESSAGE,
+  PRODUCTS_ERROR_MESSAGE,
   MAX_PRODUCTS_PER_PAGE,
   TOTAL_PRODUCTS,
 } from '@/helpers/literals';
@@ -30,7 +30,7 @@ const useProducts = ({ nextProductsIndex }: { nextProductsIndex: number }) => {
     fetch(`${API_BASE_URL}?skip=${nextProductsIndex}&limit=${MAX_PRODUCTS_PER_PAGE}`)
       .then((response) => {
         if (response.status === 200) return response.json();
-        return Promise.reject(ERROR_PRODUCTS_MESSAGE);
+        return Promise.reject(PRODUCTS_ERROR_MESSAGE);
       })
       .then(
         ({ products: fetchedProducts, limit }: { products: FetchedProduct[]; limit: number }) => {

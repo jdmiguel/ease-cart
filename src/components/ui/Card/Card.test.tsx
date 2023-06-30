@@ -1,20 +1,13 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithTheme } from '@/helpers/theme';
+import { mockedProducts } from '@/helpers/mocks';
 import Card from '.';
 
 describe('Card', () => {
   const props = {
-    data: {
-      id: 1,
-      title: 'Fake product title',
-      price: 542,
-      description: 'Fake product description',
-      rating: 3.8,
-      category: 'laptops',
-      thumbnail: 'https://i.dummyjson.com/data/products/47321/thumbnail.png',
-    },
-    actionText: 'Fake button txt',
+    data: mockedProducts[0],
+    actionText: 'Button txt mocked',
     onClickAction: vi.fn(),
   };
 
@@ -24,10 +17,12 @@ describe('Card', () => {
     });
 
     it('should display the data details passed', () => {
-      expect(screen.getByRole('presentation')).toHaveTextContent('Fake product title');
+      expect(screen.getByRole('presentation')).toHaveTextContent('First product title mocked');
       expect(screen.getByRole('presentation')).toHaveTextContent('£542');
-      expect(screen.getByRole('presentation')).toHaveTextContent('laptops');
-      expect(screen.getByRole('presentation')).toHaveTextContent('Fake product description');
+      expect(screen.getByRole('presentation')).toHaveTextContent('first category mocked');
+      expect(screen.getByRole('presentation')).toHaveTextContent(
+        'First product description mocked',
+      );
     });
 
     it('should display the primary button by default', () => {
@@ -38,7 +33,7 @@ describe('Card', () => {
     });
 
     it('should display the action text passed', () => {
-      expect(screen.getByRole('button')).toHaveTextContent('Fake button txt');
+      expect(screen.getByRole('button')).toHaveTextContent('Button txt mocked');
     });
 
     it('should call onClickAction callback when the action button is clicked', async () => {

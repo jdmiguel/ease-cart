@@ -1,6 +1,6 @@
 import { ThemeProvider, Global, css } from '@emotion/react';
 import { useThemeMode } from '@/contexts/themeModeContext';
-import Main from '@/components/Main';
+import Root from '@/components/Root';
 import { lightTheme, darkTheme } from '@/helpers/theme';
 import { colors } from '@/helpers/colors';
 
@@ -27,7 +27,7 @@ const App: React.FC = () => {
           },
         ]}
       />
-      <Main />
+      <Root />
     </ThemeProvider>
   );
 };

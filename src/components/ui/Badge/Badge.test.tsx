@@ -3,12 +3,12 @@ import Badge from '.';
 
 describe('Badge', () => {
   const props = {
-    children: 'Fake badge text',
+    children: 'Badge text mocked',
   };
 
   it('should display the passed children', () => {
     render(<Badge {...props} />);
 
-    expect(screen.getByRole('status')).toHaveTextContent('Fake badge text');
+    expect(screen.getByRole('status')).toHaveTextContent('Badge text mocked');
   });
 });

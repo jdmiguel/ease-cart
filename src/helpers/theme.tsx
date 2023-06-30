@@ -32,6 +32,7 @@ export const defaultTheme = {
     },
   },
   loader: colors.green_300,
+  error: colors.red_100,
 };
 
 export const lightTheme: Theme = {

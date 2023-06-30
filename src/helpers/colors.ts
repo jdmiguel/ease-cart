@@ -15,4 +15,5 @@ export const colors = {
   green_500: '#1c5349',
   yellow_100: '#f4b458',
   yellow_200: '#dba250',
+  red_100: '#a84a32',
 };

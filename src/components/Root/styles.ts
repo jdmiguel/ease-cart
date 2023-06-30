@@ -10,4 +10,11 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
     transition: all 0.35s;
     animation: 0.5s 0.25s forwards ${animations.fadeIn};
   `,
+  fallback: css`
+    margin: 30px;
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: ${theme.error};
+  `,
 });

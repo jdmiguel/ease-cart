@@ -10,11 +10,12 @@ declare module '@emotion/react' {
     backgroundCartItem: string;
     divider: string;
     overlay: string;
+    loader: string;
+    error: string;
     button: {
       primary: ButtonTheme;
       secondary: ButtonTheme;
       disabled: ButtonTheme;
     };
-    loader: string;
   }
 }

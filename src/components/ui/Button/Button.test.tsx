@@ -5,8 +5,8 @@ import Button from '.';
 
 describe('Button', () => {
   const props = {
-    children: 'Fake button text',
-    ariaLabel: 'Fake aria label',
+    children: 'Button txt mocked',
+    ariaLabel: 'Aria label mocked',
     onClick: vi.fn(),
   };
 
@@ -16,11 +16,11 @@ describe('Button', () => {
     });
 
     it('should display the passed children', () => {
-      expect(screen.getByRole('button')).toHaveTextContent('Fake button text');
+      expect(screen.getByRole('button')).toHaveTextContent('Button txt mocked');
     });
 
     it('should have the passed aria label', () => {
-      expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Fake aria label');
+      expect(screen.getByRole('button')).toHaveAttribute('aria-label', 'Aria label mocked');
     });
 
     it('should display the primary button by default', () => {
