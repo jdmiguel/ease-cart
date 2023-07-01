@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useCart } from '@/contexts/cartContext';
 import Button from '@/components/ui/Button';
+import { ADD_ITEM_ARIA_LABEL, REMOVE_ITEM_ARIA_LABEL } from '@/helpers/literals';
 import { styles } from './styles';
 
 export type Props = {
@@ -25,11 +26,11 @@ const ProductCounter: React.FC<Props> = ({ itemId, initialValue }) => {
 
   return (
     <div css={styles.wrapper}>
-      <Button disabled={counter === 0} ariaLabel="remove item" rounded onClick={onClickRemoveItem}>
+      <Button ariaLabel={REMOVE_ITEM_ARIA_LABEL} rounded onClick={onClickRemoveItem}>
         -
       </Button>
       <span>{counter}</span>
-      <Button ariaLabel="add item" rounded onClick={onClickAddItem}>
+      <Button ariaLabel={ADD_ITEM_ARIA_LABEL} rounded onClick={onClickAddItem}>
         +
       </Button>
     </div>

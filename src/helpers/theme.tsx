@@ -10,7 +10,7 @@ export type ButtonTheme = {
   hoveredBackground: string;
 };
 
-export const defaultTheme = {
+const defaultTheme = {
   button: {
     primary: {
       text: colors.green_500,
@@ -19,8 +19,8 @@ export const defaultTheme = {
       hoveredBackground: colors.green_100,
     },
     secondary: {
-      text: colors.neutral_100,
-      hoveredText: colors.light,
+      text: colors.neutral_200,
+      hoveredText: colors.neutral_100,
       background: colors.yellow_200,
       hoveredBackground: colors.yellow_100,
     },

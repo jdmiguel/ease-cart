@@ -41,7 +41,7 @@ describe('Button', () => {
     render(renderWithTheme(<Button {...props} variant="secondary" />));
 
     expect(screen.getByRole('button')).toHaveStyle({
-      color: '#f8fcfc',
+      color: '#e6f0ee',
       backgroundColor: '#dba250',
     });
   });

@@ -14,13 +14,13 @@ type Props = {
 };
 
 const Button: React.FC<Props> = ({
+  children,
   variant = 'primary',
   rounded = false,
   fullWidth = false,
   disabled = false,
   ariaLabel,
   onClick,
-  children,
 }) => {
   const theme = useTheme();
   const styles = getStyles({ theme, variant, rounded, fullWidth, disabled });

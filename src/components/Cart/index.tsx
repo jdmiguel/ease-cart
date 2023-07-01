@@ -26,9 +26,6 @@ const Cart: React.FC = () => {
   const theme = useTheme();
   const styles = getStyles({ theme });
 
-  const withCartItems = cartItems.length > 0;
-  const hasScroll = cartItems.length > 3;
-
   const handleMainAction = () => {
     if (!isPurchaseCompleted) {
       completePurchase();
@@ -37,6 +34,8 @@ const Cart: React.FC = () => {
     toggleCartOpenState();
   };
 
+  const withCartItems = cartItems.length > 0;
+  const hasScroll = cartItems.length > 3;
   const mainActionTxt = !isPurchaseCompleted ? BUY_BUTTON_TXT : BACK_BUTTON_TXT;
 
   return (

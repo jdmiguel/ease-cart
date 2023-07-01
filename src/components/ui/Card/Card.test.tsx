@@ -54,7 +54,7 @@ describe('Card', () => {
     render(renderWithTheme(<Card {...props} withPrimaryButton={false} />));
 
     expect(screen.getByRole('button')).toHaveStyle({
-      color: '#f8fcfc',
+      color: '#e6f0ee',
       backgroundColor: '#dba250',
     });
   });
