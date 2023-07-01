@@ -99,7 +99,7 @@ describe('Root', () => {
           expect(getTotalPrice()).toHaveTextContent('£1448');
         });
 
-        it('should update the price after increasing the amount of items', async () => {
+        it('should update the total price after increasing the items amount', async () => {
           const [firstCartItem] = getCartItems();
 
           const plusButton = firstCartItem.querySelectorAll('button')[1];
@@ -108,17 +108,24 @@ describe('Root', () => {
           expect(getTotalPrice()).toHaveTextContent('£1997');
         });
 
-        it('should remove the item and update the price after decreasing the amount of items to zero', async () => {
-          const [firstCartItem] = getCartItems();
+        it('should update the correct content of the shopping cart after decreasing the items amount to zero', async () => {
+          const [firstCartItem, secondCartItem] = getCartItems();
 
-          const minusButton = firstCartItem.querySelectorAll('button')[0];
-          await userEvent.click(minusButton);
+          const firstMinusButton = firstCartItem.querySelectorAll('button')[0];
+          const secondMinusButton = secondCartItem.querySelectorAll('button')[0];
 
-          expect(getCartItems()).toHaveLength(1);
-          expect(getTotalPrice()).toHaveTextContent('£899');
+          userEvent.click(firstMinusButton);
+          await userEvent.click(secondMinusButton);
+
+          expect(
+            screen.getByText('Please, add any product to the shopping cart'),
+          ).toBeInTheDocument();
+          expect(screen.queryByRole('list')).not.toBeInTheDocument();
+          expect(screen.getByRole('button', { name: /buy now/i })).toBeDisabled();
+          expect(getTotalPrice()).toHaveTextContent('£0');
         });
 
-        it('should display the correct content after clicking the buy button', async () => {
+        it('should display the correct content of the shopping cart after clicking the buy button', async () => {
           await userEvent.click(screen.getByRole('button', { name: /buy now/i }));
 
           expect(screen.queryByRole('list')).not.toBeInTheDocument();
