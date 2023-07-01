@@ -10,10 +10,9 @@ import {
 import { styles } from './styles';
 
 const Header: React.FC = () => {
-  const { themeMode, selectThemeMode } = useThemeMode();
+  const { themeMode, toggleThemeMode } = useThemeMode();
   const isLightTheme = themeMode === 'light';
   const themeButtonText = isLightTheme ? DARK_MODE_BUTTON_TXT : LIGHT_MODE_BUTTON_TXT;
-  const onChangeTheme = () => selectThemeMode();
 
   const { toggleCartOpenState, cartItems } = useCart();
 
@@ -28,7 +27,7 @@ const Header: React.FC = () => {
         >
           {SHOPPING_BUTTON_TXT}
         </Button>
-        <Button variant="secondary" ariaLabel={themeButtonText} onClick={onChangeTheme}>
+        <Button variant="secondary" ariaLabel={themeButtonText} onClick={toggleThemeMode}>
           {themeButtonText}
         </Button>
       </div>

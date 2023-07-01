@@ -3,7 +3,7 @@ import { ThemeMode } from '@/helpers/theme';
 
 const ThemeModeContext = createContext({
   themeMode: 'light',
-  selectThemeMode: () => {},
+  toggleThemeMode: () => {},
 });
 
 type Props = {
@@ -13,12 +13,12 @@ type Props = {
 const ThemeModeContextProvider = ({ children }: Props) => {
   const [themeMode, setThemeMode] = useState<ThemeMode>('light');
 
-  const selectThemeMode = () =>
+  const toggleThemeMode = () =>
     setThemeMode((prevThemeMode) => (prevThemeMode === 'light' ? 'dark' : 'light'));
 
   const value = {
     themeMode,
-    selectThemeMode,
+    toggleThemeMode,
   };
 
   return <ThemeModeContext.Provider value={value}>{children}</ThemeModeContext.Provider>;

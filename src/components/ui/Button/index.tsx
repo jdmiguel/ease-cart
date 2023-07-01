@@ -26,7 +26,13 @@ const Button: React.FC<Props> = ({
   const styles = getStyles({ theme, variant, rounded, fullWidth, disabled });
 
   return (
-    <button css={styles.wrapper} type="button" aria-label={ariaLabel} onClick={onClick}>
+    <button
+      css={styles.wrapper}
+      type="button"
+      aria-label={ariaLabel}
+      onClick={onClick}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

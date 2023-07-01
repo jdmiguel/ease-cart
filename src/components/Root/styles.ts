@@ -8,7 +8,7 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
     min-height: 100vh;
     opacity: 0;
     transition: all 0.35s;
-    animation: 0.5s 0.25s forwards ${animations.fadeIn};
+    animation: 0.35s forwards ${animations.fadeIn};
   `,
   fallback: css`
     margin: 30px;

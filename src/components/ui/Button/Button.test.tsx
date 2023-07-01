@@ -61,6 +61,7 @@ describe('Button', () => {
   it('should display the disabled button styles when is disabled', () => {
     render(renderWithTheme(<Button {...props} disabled />));
 
+    expect(screen.getByRole('button')).toBeDisabled();
     expect(screen.getByRole('button')).toHaveStyle('pointer-events: none');
   });
 });

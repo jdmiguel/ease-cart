@@ -1,12 +1,19 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { renderWithTheme } from '@/helpers/theme';
-import { mockedProducts } from '@/helpers/mocks';
 import Card from '.';
 
 describe('Card', () => {
   const props = {
-    data: mockedProducts[0],
+    data: {
+      id: 1,
+      title: 'First product title mocked',
+      price: 542,
+      description: 'First product description mocked',
+      rating: 3.8,
+      category: 'first category mocked',
+      thumbnail: 'https://i.dummyjson.com/data/products/47321/thumbnail.png',
+    },
     actionText: 'Button txt mocked',
     onClickAction: vi.fn(),
   };

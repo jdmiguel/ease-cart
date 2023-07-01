@@ -6,7 +6,7 @@ const Loader: React.FC = () => {
   const styles = getStyles({ theme });
 
   return (
-    <div css={styles.wrapper}>
+    <div css={styles.wrapper} role="progressbar">
       <span css={styles.line} />
     </div>
   );

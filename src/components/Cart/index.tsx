@@ -71,7 +71,7 @@ const Cart: React.FC = () => {
             {!isPurchaseCompleted && (
               <>
                 <hr css={styles.divider} />
-                <div css={styles.totalPrice}>
+                <div css={styles.totalPrice} data-testid="total-price">
                   <span>{TOTAL_PRICE_TXT}</span>
                   <span>{`£${totalPrice}`}</span>
                 </div>

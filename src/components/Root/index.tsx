@@ -11,7 +11,7 @@ const Root: React.FC = () => {
   const styles = getStyles({ theme });
 
   return (
-    <div css={styles.wrapper}>
+    <div css={styles.wrapper} role="application">
       <Header />
       <ErrorBoundary FallbackComponent={() => <p css={styles.fallback}>{GENERIC_ERROR_MESSAGE}</p>}>
         <Products />
