@@ -13,9 +13,6 @@ const App: React.FC = () => {
     <ThemeProvider theme={selectedTheme}>
       <Global
         styles={[
-          css`
-            @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
-          `,
           {
             html: {
               scrollBehavior: 'smooth',
