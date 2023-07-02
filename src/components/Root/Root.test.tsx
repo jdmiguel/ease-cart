@@ -1,7 +1,7 @@
 import { ThemeProvider } from '@emotion/react';
 import { render, screen, waitFor, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import '@/mocks/intersectionObserverMock';
+import '@/helpers/intersectionObserverMock';
 import { ThemeModeContextProvider } from '@/contexts/themeModeContext';
 import { CartContextProvider } from '@/contexts/cartContext';
 import { lightTheme } from '@/helpers/theme';

@@ -1,4 +1,4 @@
-export const LOGO_TXT = 'Easy Grocery';
+export const LOGO_TXT = 'Ease Cart';
 export const SHOPPING_BUTTON_TXT = 'Shopping Cart';
 export const ADD_TO_CART_BUTTON_TXT = 'Add to cart';
 export const REMOVE_FROM_CART_BUTTON_TXT = 'Remove from cart';
