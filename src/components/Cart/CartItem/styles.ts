@@ -31,7 +31,7 @@ export const getStyles = ({ theme, imageUrl }: { theme: Theme; imageUrl: string 
   `,
   name: css`
     margin: 0;
-    max-width: 150px;
+    max-width: 145px;
     font-weight: 600;
     white-space: nowrap;
     overflow: hidden;
