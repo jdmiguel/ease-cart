@@ -6,7 +6,8 @@ export const styles = {
     padding: 4px 8px;
     text-transform: uppercase;
     color: ${colors.neutral_200};
-    font-size: 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 500;
     letter-spacing: 0.02rem;
     background-color: ${colors.neutral_400};
     border-radius: 10px;

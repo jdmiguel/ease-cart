@@ -26,7 +26,7 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
   content: css`
     background-color: ${theme.backgroundCard};
     width: 300px;
-    max-height: 415px;
+    max-height: 425px;
     border-radius: 4px;
     padding: 18px;
     display: flex;
@@ -38,17 +38,17 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
   `,
   title: css`
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 800;
     margin: 0;
   `,
   scrollTxt: css`
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     text-align: right;
-    opacity: 0.7;
+    opacity: 0.8;
   `,
   items: css`
     margin: 6px 0 4px;
@@ -70,7 +70,7 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
   totalPrice: css`
     display: flex;
     justify-content: space-between;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 600;
   `,
   actions: css`

@@ -24,14 +24,14 @@ export const getStyles = ({
 
   return {
     wrapper: css`
-      font-size: 0.75rem;
+      font-size: 0.85rem;
       outline: 0;
       border: 0;
       cursor: pointer;
       pointer-events: ${disabled ? 'none' : 'unset'};
       border-radius: ${rounded ? '50%' : '4px'};
       padding: ${rounded ? 'unset' : '14px'};
-      min-width: ${rounded ? '14px' : '120px'};
+      min-width: ${rounded ? '16px' : '120px'};
       width: ${fullWidth ? '100%' : 'unset'};
       display: flex;
       align-items: center;

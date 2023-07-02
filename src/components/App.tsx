@@ -17,9 +17,12 @@ const App: React.FC = () => {
             @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
           `,
           {
+            html: {
+              scrollBehavior: 'smooth',
+            },
             body: {
               margin: 0,
-              fontSize: 14,
+              fontSize: 15,
               fontFamily: 'Open Sans, sans-serif',
               fontWeight: 300,
               backgroundColor: isLightTheme ? colors.neutral_200 : colors.neutral_600,

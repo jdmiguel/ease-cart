@@ -98,6 +98,7 @@ const CartContextProvider = ({ children }: Props) => {
     setIsPurchaseCompleted(true);
     setCartItems([]);
     setTotalPrice(0);
+    window.scrollTo(0, 0);
   };
 
   const value = {
