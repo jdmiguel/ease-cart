@@ -26,7 +26,7 @@ export const getStyles = ({ theme }: { theme: Theme }) => ({
   content: css`
     background-color: ${theme.backgroundCard};
     width: 300px;
-    max-height: 425px;
+    max-height: 435px;
     border-radius: 4px;
     padding: 18px;
     display: flex;
