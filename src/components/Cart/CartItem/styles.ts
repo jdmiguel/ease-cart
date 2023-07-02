@@ -1,6 +1,7 @@
 import { css, Theme } from '@emotion/react';
+import loadingImgPath from '@/assets/loading.svg';
 
-export const getStyles = ({ theme, imageUrl }: { theme: Theme; imageUrl: string }) => ({
+export const getStyles = ({ theme, thumbnailUrl }: { theme: Theme; thumbnailUrl: string }) => ({
   wrapper: css`
     display: flex;
     align-items: center;
@@ -10,12 +11,20 @@ export const getStyles = ({ theme, imageUrl }: { theme: Theme; imageUrl: string 
     background-color: ${theme.backgroundCartItem};
     margin-bottom: 6px;
   `,
-  image: css`
-    background-image: url(${imageUrl});
+  thumbnailWrapper: css`
+    background-image: url(${loadingImgPath});
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    background-color: ${theme.background};
+    min-width: 60px;
+    min-height: 60px;
+  `,
+  thumbnail: css`
+    background-image: url(${thumbnailUrl});
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-color: ${theme.background};
     min-width: 60px;
     min-height: 60px;
   `,

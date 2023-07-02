@@ -56,7 +56,7 @@ const Cart: React.FC = () => {
                       name={item.name}
                       price={item.price}
                       amount={item.amount}
-                      imageUrl={item.thumbnail}
+                      thumbnailUrl={item.thumbnail}
                     />
                   ))}
                 </ul>

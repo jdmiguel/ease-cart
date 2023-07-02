@@ -7,16 +7,18 @@ type Props = {
   name: string;
   price: number;
   amount: number;
-  imageUrl: string;
+  thumbnailUrl: string;
 };
 
-const ShoppingCartItem: React.FC<Props> = ({ id, name, price, amount, imageUrl }) => {
+const ShoppingCartItem: React.FC<Props> = ({ id, name, price, amount, thumbnailUrl }) => {
   const theme = useTheme();
-  const styles = getStyles({ theme, imageUrl });
+  const styles = getStyles({ theme, thumbnailUrl });
 
   return (
     <li css={styles.wrapper}>
-      <div css={styles.image} />
+      <div css={styles.thumbnailWrapper}>
+        <div css={styles.thumbnail} />
+      </div>
       <div css={styles.content}>
         <div css={styles.details}>
           <p css={styles.name} title={name}>

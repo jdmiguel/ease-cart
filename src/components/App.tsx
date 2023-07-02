@@ -12,20 +12,18 @@ const App: React.FC = () => {
   return (
     <ThemeProvider theme={selectedTheme}>
       <Global
-        styles={[
-          {
-            html: {
-              scrollBehavior: 'smooth',
-            },
-            body: {
-              margin: 0,
-              fontSize: 15,
-              fontFamily: 'Open Sans, sans-serif',
-              fontWeight: 300,
-              backgroundColor: isLightTheme ? colors.neutral_200 : colors.neutral_600,
-            },
-          },
-        ]}
+        styles={css`
+          html {
+            scroll-behavior: smooth;
+          }
+          body {
+            margin: 0;
+            font-size: 15px;
+            font-family: Open Sans, sans-serif;
+            font-weight: 300;
+            background-color: ${isLightTheme ? colors.neutral_200 : colors.neutral_600};
+          }
+        `}
       />
       <Root />
     </ThemeProvider>
